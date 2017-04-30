@@ -127,8 +127,8 @@ window.onload = function ()
     {
         for(var i = 0; i < 5; i++)
         {
-            var divId = "#line_" + parseInt(i, 10) + " > img";
-            var integer = parseInt(i, 10);
+            var integer = parseInt(i, 10) + 1;
+            var divId = "#line_" +  integer + " > img";
             $(divId).attr("src", "img/" + fav[i] + "_" + integer + ".jpg")
         }
     }
