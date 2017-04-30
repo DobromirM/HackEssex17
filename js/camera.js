@@ -30,6 +30,9 @@ var setup = function ()
 
     var cl = webgazer.getTracker().clm;
 
+    $('#webgazerVideoFeed').toggle();
+    $('#overlay').toggle();
+
     function drawLoop()
     {
         requestAnimFrame(drawLoop);

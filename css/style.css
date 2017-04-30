@@ -53,3 +53,67 @@ table {
     float: right;
     background: red;
 }
+
+.rightCount
+{
+    position: absolute;
+    background: green;
+    top: 400px;
+    left: 800px;
+    padding: 10px;
+}
+
+.leftCount
+{
+    position: absolute;
+    background: red;
+    top: 400px;
+    left: 20px;
+    padding: 10px;
+}
+
+.middle
+{
+    position: absolute;
+    background: black;
+    left: 46vw;
+    top:0;
+    padding: 2vw;
+    height: 92.9vh;
+}
+
+.start
+{
+    display: none;
+    width: 5%;
+    position: absolute;
+    top: 47vh;
+    left: 42vw;
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 10000;
+    cursor: pointer;
+
+}
+
+#myCanvas
+{
+    z-index: 10;
+}
+
+.mainApp
+{
+    display: none;
+}
+
+body
+{
+    background-image: url("../img/bg.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
