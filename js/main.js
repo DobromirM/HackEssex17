@@ -37,9 +37,11 @@ window.onload = function ()
 
     $(".start").click(function ()
     {
+        index = 1;
+        $(".left > img ").attr("src", "img/left_" + index + ".jpg");
+        $(".right > img ").attr("src", "img/right_" + index + ".jpg");
         $(".init").css("display", "none");
         $(".mainApp").css("display", "block");
-        index = 1;
         reset();
     });
 
@@ -88,7 +90,7 @@ window.onload = function ()
             $('.rightCount').html(right);
         }
 
-        if(left + right == 15)
+        if(left + right == 10)
         {
             if(left > right)
             {
@@ -125,8 +127,9 @@ window.onload = function ()
     {
         for(var i = 0; i < 5; i++)
         {
-            var divId = "#line_" + i;
-            $(divId).attr("src", "img/" + fav[i] + "_" + i+1 + ".jpg")
+            var divId = "#line_" + parseInt(i, 10) + " > img";
+            var integer = parseInt(i, 10);
+            $(divId).attr("src", "img/" + fav[i] + "_" + integer + ".jpg")
         }
     }
 
