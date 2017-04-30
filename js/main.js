@@ -1,11 +1,13 @@
 window.onload = function ()
 {
 
+    var index = -1000;
     var left = 0;
     var right = 0;
     var xprediction = [];
     var yprediction = [];
     var time;
+    var fav = [];
 
     //This is the webGaze initial setup
     webgazer.setRegression('ridge') /* currently must set regression and tracker */
@@ -35,11 +37,10 @@ window.onload = function ()
 
     $(".start").click(function ()
     {
-        console.log("test");
-        $("#myCanvas").css("display", "none");
-        $(".start").css("display", "none");
+        $(".init").css("display", "none");
         $(".mainApp").css("display", "block");
-
+        index = 1;
+        reset();
     });
 
     setTimeout(drawPrediction, 2000);
@@ -57,15 +58,15 @@ window.onload = function ()
         var avgX = sumX / xprediction.length;
         var avgY = sumY / yprediction.length;
 
-        console.log("Final x = " + avgX);
-        console.log("Final y = " + avgY);
+        // console.log("Final x = " + avgX);
+        // console.log("Final y = " + avgY);
 
         xprediction = [];
         yprediction = [];
 
         var size = 10;
 
-        $("body").append(
+        $(".prediction").append(
             $('<div></div>')
                 .css('position', 'absolute')
                 .css('top', avgY + 'px')
@@ -73,6 +74,7 @@ window.onload = function ()
                 .css('width', size)
                 .css('height', size)
                 .css('background-color', 'green')
+                .css("z-index", "1000")
         );
 
         if(avgX < 425)
@@ -86,8 +88,46 @@ window.onload = function ()
             $('.rightCount').html(right);
         }
 
-        setTimeout(drawPrediction, 2000);
+        if(left + right == 15)
+        {
+            if(left > right)
+            {
+                fav.push('left');
+            }
+            else
+            {
+                fav.push('right');
+            }
+            reset();
+            index++;
+            $(".left > img ").attr("src", "img/left_" + index + ".jpg");
+            $(".right > img ").attr("src", "img/right_" + index + ".jpg");
+        }
 
+        if(index == 5 )
+        {
+            $('.mainApp').toggle();
+            createStat();
+            $('.stat').toggle();
+            index++;
+        }
+
+        setTimeout(drawPrediction, 2000);
+    }
+
+    function reset()
+    {
+        left = 0;
+        right = 0;
+    }
+
+    function createStat()
+    {
+        for(var i = 0; i < 5; i++)
+        {
+            var divId = "#line_" + i;
+            $(divId).attr("src", "img/" + fav[i] + "_" + i+1 + ".jpg")
+        }
     }
 
     $(document).keypress(function(e) {
@@ -96,10 +136,14 @@ window.onload = function ()
 
             $('#webgazerVideoFeed').toggle();
             $('#overlay').toggle();
+            $('.prediction').toggle();
         }
     });
+
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.strokeStyle = "#ffffff";
     ctx.font = "25px Arial";
     ctx.fillText("1", 5, 50);
     ctx.beginPath();
@@ -173,7 +217,7 @@ window.onload = function ()
             ctx.moveTo(950, 160);
             ctx.lineTo(1220, 40);
             ctx.stroke();
-            ctx.fillText("7", 1230, 580);
+            ctx.fillText("7", 1230, 575);
             ctx.beginPath();
             ctx.arc(1230, 580, 3, 0, Math.PI * 2, true);
             ctx.closePath();

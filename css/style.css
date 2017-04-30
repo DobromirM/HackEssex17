@@ -27,6 +27,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     line-height: 1;
+    overflow:hidden;
 }
 
 ol, ul {
@@ -54,8 +55,7 @@ table {
     background: red;
 }
 
-.rightCount
-{
+.rightCount {
     position: absolute;
     background: green;
     top: 400px;
@@ -63,8 +63,7 @@ table {
     padding: 10px;
 }
 
-.leftCount
-{
+.leftCount {
     position: absolute;
     background: red;
     top: 400px;
@@ -72,23 +71,21 @@ table {
     padding: 10px;
 }
 
-.middle
-{
+.middle {
     position: absolute;
     background: black;
-    left: 46vw;
-    top:0;
-    padding: 2vw;
-    height: 92.9vh;
+    left: 49.5vw;
+    top: 0;
+    padding: 1vw;
+    height: 96.45vh;
 }
 
-.start
-{
+.start {
     display: none;
     width: 5%;
     position: absolute;
-    top: 47vh;
-    left: 42vw;
+    top: 41vh;
+    left: 44vw;
     background-color: #008CBA; /* Green */
     border: none;
     color: white;
@@ -101,19 +98,76 @@ table {
 
 }
 
-#myCanvas
-{
+#myCanvas {
     z-index: 10;
 }
 
-.mainApp
-{
+.mainApp {
     display: none;
 }
 
-body
-{
+body {
     background-image: url("../img/bg.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.prediction {
+    display: none;
+}
+
+.left {
+    position: relative;
+    float: left;
+    width: 50.1%;
+    height: 100vh;
+}
+
+.right {
+    position: relative;
+    float: right;
+    width: 48%;
+    height: 100vh;
+}
+
+.left img
+{
+    width: 100%;
+    height: 100vh;
+}
+
+.right img
+{
+    float: right;
+    width: 101%;
+    height: 100vh;
+}
+
+.stat {
+    display: none;
+}
+
+.end
+{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 3vw;
+    font-size: 4vw;
+    font-color: white;
+    color: white;
+}
+
+.line
+{
+    position: relative;
+    width: 19%;
+    margin-top: 10%;
+    margin-left: 5%;
+    display: inline-block;
+}
+
+.line img
+{
+    width:100%;
 }
